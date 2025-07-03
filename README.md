@@ -1,10 +1,10 @@
 # Coordination-Application
 
-This is a project that has a shared to-do list, team discussion board which is organized by topics, and dashboard
+This is a project that has a shared to-do list, team discussion board which is organized by topics, and dashboard.
 
-Has real time updates for discussion board
+Has real time updates for discussion board.
 
-Eventually need to add better and more correct roles
+Eventually need to add better and more correct roles.
 
 # Contributors
 
