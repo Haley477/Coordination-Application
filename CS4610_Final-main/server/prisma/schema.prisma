@@ -1,0 +1,135 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+// Enums
+enum Role {
+  USER
+  ADMIN
+  OWNER
+}
+
+enum Status {
+  TODO
+  IN_PROGRESS
+  REVIEW
+  COMPLETED
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+// Models
+model Project {
+  id           String            @id @default(auto()) @map("_id") @db.ObjectId
+  name         String
+  description  String?
+  isActive     Boolean           @default(true)
+  memberships  ProjectMembership[]
+  todoLists    ToDoList[]
+  boards       DiscussionBoard[]
+
+  @@map("projects")
+}
+
+model User {
+  id            String             @id @default(auto()) @map("_id") @db.ObjectId
+  username      String             @unique
+  email         String             @unique
+  password      String
+  firstName     String?
+  lastName      String?
+  memberships   ProjectMembership[]
+  todoItems     ToDoItem[]         @relation("AssignedToItems")
+  createdItems  ToDoItem[]         @relation("CreatedByItems")
+  reviewedItems ToDoItem[]         @relation("ReviewedByItems")
+  createdLists  ToDoList[]
+  createdBoards DiscussionBoard[]
+  posts         DiscussionPost[]
+
+  @@map("users")
+}
+
+model ProjectMembership {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  project   Project  @relation(fields: [projectId], references: [id])
+  projectId String   @db.ObjectId
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String   @db.ObjectId
+  role      Role     @default(USER)
+  joinedAt  DateTime @default(now())
+
+  @@unique([projectId, userId])
+  @@map("project_memberships")
+}
+
+model ToDoList {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  project     Project   @relation(fields: [projectId], references: [id])
+  projectId   String    @db.ObjectId
+  name        String
+  description String?
+  createdBy   User      @relation(fields: [createdById], references: [id])
+  createdById String    @db.ObjectId
+  items       ToDoItem[]
+
+  @@map("todo_lists")
+}
+
+model ToDoItem {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  list        ToDoList  @relation(fields: [listId], references: [id])
+  listId      String    @db.ObjectId
+  title       String
+  description String?
+  status      Status    @default(TODO)
+  priority    Priority  @default(MEDIUM)
+  assignedTo  User?     @relation("AssignedToItems", fields: [assignedToId], references: [id])
+  assignedToId String?  @db.ObjectId
+  createdBy   User      @relation("CreatedByItems", fields: [createdById], references: [id])
+  createdById String    @db.ObjectId
+  dueDate     DateTime?
+  isInReview  Boolean   @default(false)
+  reviewedBy  User?     @relation("ReviewedByItems", fields: [reviewedById], references: [id])
+  reviewedById String?  @db.ObjectId
+  reviewedAt  DateTime?
+
+  @@map("todo_items")
+}
+
+model DiscussionBoard {
+  id          String           @id @default(auto()) @map("_id") @db.ObjectId
+  project     Project          @relation(fields: [projectId], references: [id])
+  projectId   String           @db.ObjectId
+  name        String
+  description String?
+  createdBy   User             @relation(fields: [createdById], references: [id])
+  createdById String           @db.ObjectId
+  posts       DiscussionPost[]
+
+  @@map("discussion_boards")
+}
+
+model DiscussionPost {
+  id        String          @id @default(auto()) @map("_id") @db.ObjectId
+  board     DiscussionBoard @relation(fields: [boardId], references: [id])
+  boardId   String          @db.ObjectId
+  user      User            @relation(fields: [userId], references: [id])
+  userId    String          @db.ObjectId
+  content   String
+  createdAt DateTime        @default(now())
+
+  fileName String?
+  fileUrl String?
+
+  // Map this model to the collection you specified
+  @@map("discussionCollection")
+}

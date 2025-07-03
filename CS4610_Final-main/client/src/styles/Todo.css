@@ -1,0 +1,307 @@
+.screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.project-selection {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 20px;
+}
+
+.project-selection select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.open-creation-popup {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background-color 0.3s;
+}
+
+.open-creation-popup:hover {
+    background-color: #45a049;
+}
+
+/* Todo sections - Kanban board layout */
+.todo-sections {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 20px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    max-width: 320px;
+    flex: 1;
+}
+
+.column h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+    padding: 10px;
+    background-color: #f9f5ee;
+    border-radius: 6px 6px 0 0;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    background-color: #f0e6d9;
+    width: 100%;
+    min-height: 400px;
+    height: auto;
+    padding: 15px;
+    border-radius: 0 0 6px 6px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Empty state styling */
+.empty-state {
+    color: #999;
+    text-align: center;
+    padding: 30px 0;
+    font-style: italic;
+    width: 100%;
+}
+
+/* Todo item styling */
+.todo-item {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 8px;
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+    cursor: grab;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.2s;
+}
+
+.todo-item:active {
+    cursor: grabbing;
+}
+
+.todo-item:hover {
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.15);
+}
+
+.todo-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.todo-title {
+    font-weight: bold;
+    margin-bottom: 8px;
+    word-break: break-word;
+}
+
+.todo-description {
+    font-size: 0.9em;
+    margin-bottom: 10px;
+    color: #333;
+    word-break: break-word;
+}
+
+.todo-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 0.85em;
+}
+
+.todo-priority {
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.priority-high {
+    background-color: #ffcccc;
+    color: #cc0000;
+}
+
+.priority-medium {
+    background-color: #fff0cc;
+    color: #cc7a00;
+}
+
+.priority-low {
+    background-color: #e6f7e6;
+    color: #228b22;
+}
+
+.todo-assignee, .todo-due-date {
+    color: #666;
+}
+
+/* Overlay and popup styling */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 998;
+    display: none;
+}
+
+.overlay.active {
+    display: block;
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 8px;
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    z-index: 999;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    max-height: 450px;
+    overflow-y: auto;
+}
+
+.popup h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 22px;
+}
+
+.close-popup {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: #f44336;
+    color: white;
+    width: 30px;
+    height: 35px;
+    border: none;
+    border-radius: 50%;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 10px;
+    transition: background-color 0.3s;
+}
+
+.close-popup:hover {
+    background-color: #d32f2f;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.create-item {
+    background-color: #4caf50;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+.create-item:hover {
+    background-color: #45a049;
+}
+.delete {
+    background-color: #f44336;
+}
+.delete:hover {
+    background-color: #d32f2f;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .todo-sections {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .column {
+        min-width: 280px;
+        max-width: 45%;
+    }
+}
+
+@media (max-width: 768px) {
+    .column {
+        min-width: 250px;
+        max-width: 100%;
+    }
+    
+    .popup {
+        width: 95%;
+        padding: 20px;
+    }
+}

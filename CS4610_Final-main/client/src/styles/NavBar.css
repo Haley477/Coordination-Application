@@ -1,0 +1,75 @@
+header {
+  width: 100%;
+}
+
+.coordinator-header {
+  background-color: #3d7173;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.coordinator-header h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.profile-circle {
+  width: 35px;
+  height: 35px;
+  background-color: white;
+  border-radius: 50%;
+  margin-left: 15px;
+}
+
+.tab-container {
+  display: flex;
+  border-bottom: 1px solid #ddd;
+}
+
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 15px 0;
+  background-color: #f0e6d9;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.tab.active {
+  background-color: #d1b79e;
+  color: #000;
+}
+
+.user-controls {
+  display: flex;
+  align-items: center;
+}
+
+.welcome-text {
+  margin-right: 15px;
+  font-size: 14px;
+  color: white;
+}
+
+.logout-btn {
+  padding: 5px 10px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.logout-btn:hover {
+  background-color: #d32f2f;
+}
