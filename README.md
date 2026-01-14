@@ -1,17 +1,43 @@
-# Coordination-Application
+# Coordination Application
 
-This is a project that has a shared to-do list, team discussion board which is organized by topics, and dashboard.
+A collaborative web application built to manage team tasks and communication. The app includes a **shared to-do list**, a **team discussion board organized by topics**, and a **project dashboard**, featuring **real-time updates** for discussion posts.
 
-Has real time updates for discussion board.
+This project was completed as a group assignment, demonstrating skills in full-stack development, real-time updates, and collaborative software design.
 
-Eventually need to add better and more correct roles.
+---
 
-# Contributors
+## Features
 
-Vikki Ballard: Assisted with API connections, upload capability into discussion board posts, creation of discussion board component.
+- **Shared To-Do List:** Track and manage tasks across the team  
+- **Team Discussion Board:** Organize discussions by topic with real-time updates  
+- **Project Dashboard:** Visual overview of tasks, discussions, and team activity  
+- **Authentication & Roles:** Sign-up, login, and basic role assignment  
 
-Haley Smith: Set up Sign Up page and authentication, fix authentication problems from login, Worked on role assigning, creation of To-do list component.
+---
 
-Edwin Silvester: Set up MongoDB, implement correct backends, implement sockets or real-time updates for discussion post, design and implement project dashboard.
+## My Contributions
 
-Annie Houston: Implement project dashboard, creation of To-do list component, set up Prisma, setup use for tailwindcss.
+- **Haley Smith:**
+  * Developed the Sign-Up page and authentication
+  * resolved login issues
+  * worked on role assignment
+  * created the To-Do List component.  
+
+*(Other team contributions are documented in the project repository)*
+
+---
+
+## Technologies Used
+
+- **Frontend:** React, TailwindCSS  
+- **Backend:** Node.js, Express, MongoDB, Prisma  
+- **Real-Time Features:** WebSockets for discussion board updates  
+- **Authentication:** JWT and session management  
+
+---
+
+## Project Status
+
+- Completed as part of a group project  
+- Core functionality (to-do list, discussion board, dashboard) fully implemented  
+- Serves as a demonstration of collaborative full-stack development skills
